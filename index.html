@@ -2,315 +2,299 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Prizor Cam — NVR / DVR Mobile Companion</title>
-    <meta name="description" content="Download Prizor Cam mobile app for iOS and Android. Connect your NVR / DVR CCTV system, watch live 4K streams, and receive instant security alerts.">
+    <title>Prizor Cam — Redirecting...</title>
     <meta name="theme-color" content="#131a22">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Prizor Cam — NVR / DVR Surveillance App">
-    <meta property="og:description" content="Connect instantly to your NVR / DVR security recorder on iOS and Android.">
-    <meta property="og:type" content="website">
-
-    <!-- Google Fonts -->
+    <!-- Preconnect Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Kulim+Park:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kulim+Park:wght@600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <script>
+        // Immediate Zero-Delay Smart Router
+        const IOS_URL = "https://apps.apple.com/in/app/prizor-cam/id6759190546";
+        const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.PRIZORCAM.phone";
+
+        function detectPlatform() {
+            const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+            
+            // iOS detection (iPhone, iPad, iPod)
+            if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+                return 'ios';
+            }
+            // iPad on iOS 13+ (reports as MacIntel with touch)
+            if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) {
+                return 'ios';
+            }
+            // Android detection
+            if (/android/i.test(ua)) {
+                return 'android';
+            }
+            return 'other';
+        }
+
+        const platform = detectPlatform();
+
+        // Perform instant redirect for mobile devices
+        if (platform === 'ios') {
+            window.location.replace(IOS_URL);
+        } else if (platform === 'android') {
+            window.location.replace(ANDROID_URL);
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-dark: #131a22;
+            --bg-card: #1a222a;
+            --accent-orange: #ff9130;
+            --accent-glow: rgba(255, 145, 48, 0.25);
+            --text-white: #ffffff;
+            --text-muted: #8b949e;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-heading: 'Kulim Park', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            font-family: var(--font-body);
+            color: var(--text-white);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Ambient Glow Circles (Faseen Style) */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .orb-1 {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, var(--accent-orange), transparent 70%);
+            top: -80px;
+            left: -80px;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ff6900, transparent 70%);
+            bottom: -80px;
+            right: -80px;
+        }
+
+        /* Minimal Centered Card */
+        .redirect-card {
+            position: relative;
+            z-index: 1;
+            background: rgba(26, 34, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 36px 28px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow);
+            animation: cardEntrance 0.4s ease-out;
+        }
+
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(12px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Logo */
+        .logo-wrap {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .spinner-ring {
+            position: absolute;
+            width: 64px;
+            height: 64px;
+            border: 2px solid rgba(255, 145, 48, 0.15);
+            border-top: 2px solid var(--accent-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+        }
+
+        /* App Title & Subtitle */
+        .app-name {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            margin-bottom: 4px;
+        }
+
+        .app-name span {
+            color: var(--accent-orange);
+        }
+
+        .redirect-status {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        /* Fallback Action Buttons */
+        .manual-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-store {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #252d37;
+            border: 1px solid var(--border);
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 13px 18px;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+        }
+
+        .btn-store svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .btn-store:hover {
+            border-color: var(--accent-orange);
+            background: #2c3642;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 145, 48, 0.2);
+        }
+
+        .btn-store.active-os {
+            background: var(--accent-orange);
+            color: #131a22;
+            border-color: var(--accent-orange);
+            box-shadow: 0 6px 20px rgba(255, 145, 48, 0.35);
+        }
+
+        .btn-store:active {
+            transform: scale(0.98);
+        }
+
+        /* Footer Info */
+        .footer-note {
+            margin-top: 20px;
+            font-size: 0.72rem;
+            color: #64748b;
+        }
+    </style>
 </head>
 <body>
-    <!-- Ambient Background Glow Orbs (Faseen Style) -->
-    <div class="bg-glow orb-1"></div>
-    <div class="bg-glow orb-2"></div>
-    <div class="bg-glow orb-3"></div>
-    <div class="grid-overlay"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
 
-    <div class="app-wrapper">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-container">
-                <a href="#" class="brand-logo" aria-label="Prizor Cam Home">
-                    <div class="logo-symbol">
-                        <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="36" height="36" rx="10" fill="url(#logo_grad)" />
-                            <path d="M18 9L27 14.2V21.8L18 27L9 21.8V14.2L18 9Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" />
-                            <circle cx="18" cy="18" r="4" fill="#ffffff" />
-                            <circle cx="18" cy="18" r="7" stroke="#ff9130" stroke-width="1.5" stroke-dasharray="2 3" />
-                            <defs>
-                                <linearGradient id="logo_grad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#ff9130"/>
-                                    <stop offset="1" stop-color="#1f2833"/>
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
-                    <div class="brand-text">
-                        <span class="brand-title">PRIZOR<span class="accent-dot">.</span></span>
-                        <span class="brand-sub">CAM CLOUD</span>
-                    </div>
-                </a>
+    <div class="redirect-card">
+        <!-- Animated Spinner & Logo -->
+        <div class="logo-wrap">
+            <div class="spinner-ring"></div>
+            <svg class="logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="36" height="36" rx="10" fill="url(#logo_grad)" />
+                <path d="M18 9L27 14.2V21.8L18 27L9 21.8V14.2L18 9Z" stroke="#ffffff" stroke-width="2" stroke-linejoin="round" />
+                <circle cx="18" cy="18" r="4" fill="#ffffff" />
+                <circle cx="18" cy="18" r="7" stroke="#ff9130" stroke-width="1.5" stroke-dasharray="2 3" />
+                <defs>
+                    <linearGradient id="logo_grad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#ff9130"/>
+                        <stop offset="1" stop-color="#1f2833"/>
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
 
-                <div class="header-badge">
-                    <span class="status-indicator"></span>
-                    <span class="status-text">NVR / DVR Online</span>
-                </div>
-            </div>
-        </header>
+        <h1 class="app-name">PRIZOR<span>.</span>CAM</h1>
+        <p class="redirect-status" id="statusText">Redirecting to your app store...</p>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Hero Section -->
-            <section class="hero-section">
-                <div class="nvr-tag">
-                    <svg class="tag-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                        <circle cx="12" cy="11" r="3"/>
-                    </svg>
-                    <span>NVR & DVR Companion</span>
-                </div>
-
-                <h1 class="hero-title">
-                    Control Your Video System <span class="gradient-text">Anywhere</span>
-                </h1>
-
-                <p class="hero-subtitle">
-                    Scan complete! Download the official <strong>Prizor Cam</strong> mobile app to access your live camera feeds, playback archives, and receive smart AI motion alerts from your NVR or DVR.
-                </p>
-
-                <!-- OS Auto-Detect Banner -->
-                <div id="deviceRecommendation" class="device-rec-banner hidden">
-                    <div class="rec-icon">
-                        <svg id="deviceIcon" viewBox="0 0 24 24" fill="currentColor">
-                            <!-- Dynamic Icon SVG -->
-                        </svg>
-                    </div>
-                    <div class="rec-info">
-                        <span class="rec-label">Detected Device</span>
-                        <span id="deviceName" class="rec-name">Apple iOS</span>
-                    </div>
-                    <span class="rec-badge">Recommended</span>
-                </div>
-
-                <!-- App Download Cards Group -->
-                <div class="download-grid">
-                    <!-- iOS App Store Button -->
-                    <a href="https://apps.apple.com/in/app/prizor-cam/id6759190546" target="_blank" rel="noopener noreferrer" class="store-card ios-card" id="btnIos">
-                        <div class="store-highlight-glow"></div>
-                        <div class="store-icon-wrapper">
-                            <svg class="store-icon" viewBox="0 0 384 512" fill="currentColor">
-                                <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
-                            </svg>
-                        </div>
-                        <div class="store-content">
-                            <span class="store-caption">Download on the</span>
-                            <span class="store-title">App Store</span>
-                            <div class="store-meta">
-                                <span class="badge-ios">iOS 12.0+</span>
-                                <span class="rating">★ 4.8</span>
-                            </div>
-                        </div>
-                        <div class="store-arrow">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </a>
-
-                    <!-- Android Google Play Button -->
-                    <a href="https://play.google.com/store/apps/details?id=com.PRIZORCAM.phone" target="_blank" rel="noopener noreferrer" class="store-card android-card" id="btnAndroid">
-                        <div class="store-highlight-glow"></div>
-                        <div class="store-icon-wrapper">
-                            <svg class="store-icon" viewBox="0 0 512 512" fill="currentColor">
-                                <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
-                            </svg>
-                        </div>
-                        <div class="store-content">
-                            <span class="store-caption">GET IT ON</span>
-                            <span class="store-title">Google Play</span>
-                            <div class="store-meta">
-                                <span class="badge-android">Android 7.0+</span>
-                                <span class="rating">★ 4.7</span>
-                            </div>
-                        </div>
-                        <div class="store-arrow">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Direct Action Bar -->
-                <div class="quick-action-panel">
-                    <div class="action-item">
-                        <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                            <polyline points="7 10 12 15 17 10"/>
-                            <line x1="12" y1="15" x2="12" y2="3"/>
-                        </svg>
-                        <div class="action-text">
-                            <strong>100% Free Download</strong>
-                            <span>No registration fees for basic NVR / DVR pairing</span>
-                        </div>
-                    </div>
-                    <div class="action-divider"></div>
-                    <div class="action-item">
-                        <svg class="action-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                        </svg>
-                        <div class="action-text">
-                            <strong>End-to-End P2P Encryption</strong>
-                            <span>Secure low-latency video streaming</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Quick Setup Steps -->
-            <section class="setup-section">
-                <div class="section-header">
-                    <span class="section-tag">3 SIMPLE STEPS</span>
-                    <h2 class="section-title">How to Connect to NVR / DVR</h2>
-                </div>
-
-                <div class="steps-container">
-                    <div class="step-card">
-                        <div class="step-number">01</div>
-                        <div class="step-icon-box">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                                <line x1="12" y1="18" x2="12.01" y2="18"/>
-                            </svg>
-                        </div>
-                        <h3 class="step-heading">Install App</h3>
-                        <p class="step-desc">Tap your store button above to download <strong>Prizor Cam</strong> on your smartphone.</p>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">02</div>
-                        <div class="step-icon-box">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
-                                <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
-                                <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
-                                <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
-                                <rect x="7" y="7" width="10" height="10" rx="1"/>
-                            </svg>
-                        </div>
-                        <h3 class="step-heading">Scan Cloud ID</h3>
-                        <p class="step-desc">Open the app, tap <strong>(+) Add Device</strong> and scan the Cloud QR code shown on your NVR / DVR screen.</p>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">03</div>
-                        <div class="step-icon-box">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polygon points="10 8 16 12 10 16 10 8"/>
-                            </svg>
-                        </div>
-                        <h3 class="step-heading">Watch Live Stream</h3>
-                        <p class="step-desc">Instant real-time multi-camera playback, PTZ control, and live notifications.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Features Showcase -->
-            <section class="features-section">
-                <div class="section-header">
-                    <span class="section-tag">APP CAPABILITIES</span>
-                    <h2 class="section-title">Built for Smart Surveillance</h2>
-                </div>
-
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polygon points="23 7 16 12 23 17 23 7"/>
-                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                            </svg>
-                        </div>
-                        <h4>4K Ultra HD Live Video</h4>
-                        <p>Crystal clear multi-channel streaming with low latency P2P cloud transfer.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-                            </svg>
-                        </div>
-                        <h4>Instant Push Alerts</h4>
-                        <p>Human detection, line crossing, and motion triggers sent right to your phone screen.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                        </div>
-                        <h4>Timeline Archive Playback</h4>
-                        <p>Browse recorded events, pinch-to-zoom timeline, and export video clips easily.</p>
-                    </div>
-
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                                <line x1="12" y1="19" x2="12" y2="23"/>
-                                <line x1="8" y1="23" x2="16" y2="23"/>
-                            </svg>
-                        </div>
-                        <h4>2-Way Audio & PTZ</h4>
-                        <p>Talk through camera speakers and pan/tilt/zoom with intuitive touch controls.</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-container">
-                <div class="footer-brand">
-                    <span class="f-logo">PRIZOR<span class="accent-dot">.</span>CAM</span>
-                    <p class="f-desc">Next-Generation NVR / DVR & CCTV Mobile Ecosystem</p>
-                </div>
-
-                <div class="footer-bottom">
-                    <p>© 2026 Prizor Security System. All rights reserved.</p>
-                    <div class="footer-meta">
-                        <span>P2P Cloud v3.8</span>
-                        <span>•</span>
-                        <span>SSL Secure</span>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Floating Quick Download Bar for Mobile Scrolling -->
-    <div class="floating-dock" id="floatingDock">
-        <div class="floating-content">
-            <div class="floating-info">
-                <span class="floating-title">Prizor Cam</span>
-                <span class="floating-desc" id="floatingDeviceLabel">Get for iOS & Android</span>
-            </div>
-            <a href="https://apps.apple.com/in/app/prizor-cam/id6759190546" class="floating-btn" id="floatingDownloadBtn" target="_blank" rel="noopener noreferrer">
-                <span>Download</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
+        <!-- Direct Manual Links (for desktop or if pop-up/redirect blocked) -->
+        <div class="manual-buttons">
+            <a href="https://apps.apple.com/in/app/prizor-cam/id6759190546" class="btn-store" id="iosBtn">
+                <svg viewBox="0 0 384 512">
+                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
                 </svg>
+                <span>Apple App Store</span>
+            </a>
+
+            <a href="https://play.google.com/store/apps/details?id=com.PRIZORCAM.phone" class="btn-store" id="androidBtn">
+                <svg viewBox="0 0 512 512">
+                    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/>
+                </svg>
+                <span>Google Play Store</span>
             </a>
         </div>
+
+        <p class="footer-note">NVR & DVR Cloud Gateway • Prizor Cam</p>
     </div>
 
-    <script src="app.js"></script>
+    <script>
+        // Update UI state based on platform
+        document.addEventListener('DOMContentLoaded', () => {
+            const statusEl = document.getElementById('statusText');
+            const iosBtn = document.getElementById('iosBtn');
+            const androidBtn = document.getElementById('androidBtn');
+
+            if (platform === 'ios') {
+                statusEl.textContent = 'Redirecting to Apple App Store...';
+                iosBtn.classList.add('active-os');
+                // Backup redirect in case header redirect was caught by browser delay
+                setTimeout(() => { window.location.href = IOS_URL; }, 150);
+            } else if (platform === 'android') {
+                statusEl.textContent = 'Redirecting to Google Play Store...';
+                androidBtn.classList.add('active-os');
+                // Backup redirect in case header redirect was caught by browser delay
+                setTimeout(() => { window.location.href = ANDROID_URL; }, 150);
+            } else {
+                statusEl.textContent = 'Please choose your mobile platform:';
+            }
+        });
+    </script>
 </body>
 </html>
