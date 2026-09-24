@@ -1,5 +1,5 @@
 /**
- * Prizor Cam — NVR QR Code Landing Page Logic
+ * Prizor Cam — NVR / DVR QR Code Landing Page Logic
  * Smart OS Detection, Auto Highlight & Floating Dock Interaction
  */
 
